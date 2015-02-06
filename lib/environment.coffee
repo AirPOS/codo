@@ -36,6 +36,15 @@ module.exports = class Environment
     @options.output  ?= 'doc'
     @options.basedir ?= process.cwd()
 
+    if @options.namespace?
+      if typeof(@options.namespace) is 'string'
+        @options.namespaceDir = @options.namespace
+      else
+        @options.namespaceDir = @options.basedir
+      @options.namespace = true
+    else
+      @options.namespace = falseb
+
     @needles    = []
     @entities   = []
     @references = {}
