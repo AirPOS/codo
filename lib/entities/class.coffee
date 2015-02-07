@@ -42,13 +42,15 @@ module.exports = class Entities.Class extends require('../entity')
 
   fetchParent: (source) ->
     [selfish, container] = @determineContainment(source)
-    @fetchName(source, selfish, container)
+    @fetchName(source, selfish, container, true)
 
-  fetchName: (source, selfish, container) ->
+  fetchName: (source, selfish, container, parent = false) ->
     name = []
 
     # Optional namespace derived from the file location
-    name = name.concat @file.namespace
+    # Don't add for inheritance
+    unless parent or container
+      name = name.concat @file.namespace
 
     # Nested class definition inherits 
     # the namespace from the containing class

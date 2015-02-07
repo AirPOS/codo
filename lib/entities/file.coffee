@@ -16,7 +16,8 @@ module.exports = class Entities.File extends require('../entity')
 
     if @environment.options.namespace
       relativePath = Path.relative(@environment.options.namespaceDir, @path)
-      @namespace = Path.dirname(relativePath).split(Path.sep)
+      relativeDir = Path.dirname(relativePath)
+      @namespace = if relativeDir is "." then [] else relativeDir.split(Path.sep)
     else
       @namespace = []
 
