@@ -11,6 +11,13 @@ $ ->
       $(@).find('> li').css 'padding-left', "#{ width }px"
       window.indentTree $(@), width + 20
 
+  toggle = ->
+    $(@).toggleClass 'collapsed'
+    $(@).parent().next().toggle()
+    window.createStripes()
+
+  window.toggleAll = ->
+    $('#content.tree a.toggle').each toggle
 
   #
   # Add tree arrow links
@@ -55,13 +62,11 @@ $ ->
   #
   # Collapse/expand sub trees
   #
-  $('#content.tree a.toggle').click ->
-    $(@).toggleClass 'collapsed'
-    $(@).parent().next().toggle()
-    window.createStripes()
+  $('#content.tree a.toggle').click toggle
 
   #
   # Initialize
   #
   indentTree $('#content.list > ul'), 20
   createStripes()
+  toggleAll()
