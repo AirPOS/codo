@@ -43,7 +43,7 @@ module.exports = class Environment
         @options.namespaceDir = @options.basedir
       @options.namespace = true
     else
-      @options.namespace = falseb
+      @options.namespace = false
 
     @needles    = []
     @entities   = []
