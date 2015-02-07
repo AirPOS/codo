@@ -41,7 +41,7 @@ module.exports = class Theme.Theme
   # HELPERS
   #
   awareOf: (needle) ->
-    @environment.references[needle]?
+    @environment.reference(needle)?
 
   reference: (needle, prefix) ->
     @pathFor(@environment.reference(needle), undefined, prefix)

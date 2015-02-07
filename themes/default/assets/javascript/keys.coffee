@@ -73,3 +73,7 @@ $ ->
     try
       parent.frames.main.$('#fuzzySearch').show()
       parent.frames.main.$('#fuzzySearch input').focus().select()
+
+  key 'r', (e) ->
+    parent.frames.main.location.reload()
+
